@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanban Board</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="kanban-app">
+            <h1>Kanban Board</h1>
+            <div class="input-section">
+                <input type="text" id="taskInput" placeholder="Add a new task..." />
+                <button id="addBtn">Add Task</button>
+            </div>
+            <div class="kanban-board">
+                <div class="kanban-column" data-status="todo">
+                    <div class="column-header">
+                        <h2>To Do</h2>
+                        <span class="task-count" id="todo-count">0</span>
+                    </div>
+                    <div class="task-list" id="todo-list"></div>
+                </div>
+                <div class="kanban-column" data-status="inprogress">
+                    <div class="column-header">
+                        <h2>In Progress</h2>
+                        <span class="task-count" id="inprogress-count">0</span>
+                    </div>
+                    <div class="task-list" id="inprogress-list"></div>
+                </div>
+                <div class="kanban-column" data-status="done">
+                    <div class="column-header">
+                        <h2>Done</h2>
+                        <span class="task-count" id="done-count">0</span>
+                    </div>
+                    <div class="task-list" id="done-list"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Task Detail Modal -->
+    <div id="taskModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTaskTitle"></h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <!-- Task Description -->
+                <div class="modal-section">
+                    <h3>Description</h3>
+                    <textarea id="taskDescription" placeholder="Add a description..."></textarea>
+                </div>
+
+                <!-- Checklist Section -->
+                <div class="modal-section">
+                    <h3>Checklist</h3>
+                    <div class="checklist-input-group">
+                        <input type="text" id="checklistItemInput" placeholder="Add checklist item..." />
+                        <button id="addChecklistBtn">Add</button>
+                    </div>
+                    <div id="checklistContainer"></div>
+                </div>
+
+                <!-- Image Upload Section -->
+                <div class="modal-section">
+                    <h3>Images</h3>
+                    <input type="file" id="imageUpload" accept="image/*" multiple style="display: none;" />
+                    <button id="uploadImageBtn">Upload Image</button>
+                    <div id="imageContainer" class="image-grid"></div>
+                </div>
+
+                <!-- Comments Section -->
+                <div class="modal-section">
+                    <h3>Comments</h3>
+                    <div class="comment-input-group">
+                        <textarea id="commentInput" placeholder="Add a comment..."></textarea>
+                        <button id="addCommentBtn">Add Comment</button>
+                    </div>
+                    <div id="commentsContainer"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
