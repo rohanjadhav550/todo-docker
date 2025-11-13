@@ -13,8 +13,14 @@ COPY index.html /usr/share/nginx/html/
 COPY style.css /usr/share/nginx/html/
 COPY script.js /usr/share/nginx/html/
 
+# Copy entrypoint script
+COPY docker-entrypoint.sh /docker-entrypoint.sh
+
+# Convert Windows line endings to Unix and make executable
+RUN sed -i 's/\r$//' /docker-entrypoint.sh && chmod +x /docker-entrypoint.sh
+
 # Expose port 8083
 EXPOSE 8083
 
-# Start Nginx server
-CMD ["nginx", "-g", "daemon off;"]
+# Use entrypoint script to inject pod name and start Nginx
+ENTRYPOINT ["/docker-entrypoint.sh"]
